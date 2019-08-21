@@ -1,0 +1,50 @@
+{{!-- Create new burgers --}}
+<div class="container">
+    <h1>EAT DA BURGERRRRRR!!!</h1>
+    <div class="text-center">
+        <img src="asstes/img/burger.png" alt="burger">
+    </div>
+    <h4>Type any kind of burger that you would like to eat! Be creative!</h4>
+    <div class="row justify-content-center">
+        <form class="create-form" id="createBurger">
+            <div class="form-group">
+                <input class="form-control form-control-lg" type="text" name="burger_name" id="burgerName"
+                    placeholder="Type to create your burger here.">
+                <button type="submit" class="btn btn-primary btn lg">Eat</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{!-- Display undevoured burger list --}}
+
+<div class="row">
+    <div class="col-sm-4" id="notDevoured">
+        <ul class="list-group">
+            {{#each burgers}}
+            {{#unless devoured}}
+            <li class="list-group-item">
+                <span class="label" id={{this.id}}>{{this.id}}. {{this.burger_name}} </span>
+                <button type="button" data-id="{{this.id}}" id="devourBurger">Devour!!!!!!!</button>
+            </li>
+            {{#/unless}}
+            {{/each}}
+        </ul>
+    </div>
+</div>
+
+{{!-- Display devoured burger list --}}
+
+<div class="row">
+    <div class="col-sm-4" id="devoured">
+        <ul class="list-group">
+            {{#each burgers}}
+            {{#if devoured}
+            <li class="list-group-item-disabled">
+                <span class="label" id={{this.id}> {{this.id}}. {{this.burger_name}}</span>}
+            </li>
+            {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+</div>
