@@ -6,10 +6,11 @@ var router = express.Router();
 // Get request
 router.get("/", function (req, res) {
     burger.selectAll(function (data) {
-        var handlebarsObject = {
+        var hbsObject = {
             burgers: data
         };
-        res.render("index", handlebarsObject);
+        console.log(hbsObject)
+        res.render("index", hbsObject);
     });
 });
 
@@ -27,7 +28,7 @@ router.post("/api/burgers", function (req, res) {
 });
 
 // Post request to update data
-router.post("api/burgers/:id", function (req, res) {
+router.put("api/burgers/:id", function (req, res) {
     var burgerId = "id = " + req.params.id;
 
     console.log("New Burger Update", burgerId);
